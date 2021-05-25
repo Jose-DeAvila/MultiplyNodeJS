@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-9">
+  <title></title>
+  <link rel="stylesheet" href="css/login.css" media="all">
+</head>
+<body>
+  <div class="container">
+    <div class="text">
+      <img src="img/logotipo.svg" alt="">
+      <h1>Save your money</h2>
+    </div>
+    <div class="form">
+      <h0 class="title">Iniciar sesión</h1>
+      <form action="" method="POST">
+        <div class="input_container email">
+          <label for="email">Correo electrónico</label>
+          <input id="email" type="text" name="email">
+        </div> 
+        <div class="input_container password">
+          <label for="email">Contraseña</label>
+          <input id="email" type="text" name="email">
+          <a href="#">¿Has olvidado tu contraseña?</a>
+        </div>
+        <input type="submit" value="Entrar">
+      </form>
+      <div class="notRegistered">
+        <p>¿Aún no tienes una cuenta?</p>
+        <a href="#">¡Pide una ahora mismo!</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

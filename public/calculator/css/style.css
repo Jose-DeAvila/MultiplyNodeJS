@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  place-items: center;
+  font-family: 'Syne Mono', monospace;
+}
+
+svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+svg path {
+  transition: 3s ease-in-out all;
+}
+
+.container{
+  width: auto;
+  height: 500px;
+  text-align: center;
+}
+
+.container h1{
+  font-size: 5rem;
+  margin-bottom: 20px;
+}
+
+.container form{
+  font-size: 2rem;
+}
+
+.container form input[type="number"]{
+  font-family: 'Syne Mono', monospace;
+  font-size: 2rem;
+  width: 10%;
+}
+
+.container form .btnSubmit{
+  font-size: 2rem;
+  margin: 30px 0;
+  padding: 10px 25px;
+  font-family: 'Syne Mono', monospace;
+  outline: none;
+  background-color: transparent;
+  color: #0099ff;
+  cursor: pointer;
+  border: 2px dotted #0099ff;
+  border-radius: 25px;
+  transition: .5s ease all;
+}
+
+.container form .btnSubmit:hover{
+  color: white;
+  background-color: #0099ff;
+  border-color: rgba(0,0,255,0.1);
+}

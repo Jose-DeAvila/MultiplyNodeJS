@@ -1,0 +1,834 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,400;0,600;0,700;0,900;1,700&display=swap");
+
+body {
+  background: white;
+  font-family: "Nunito", sans-serif;
+  overflow-x: hidden;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+.btnUp{
+  position: fixed;
+  z-index: 999;
+  bottom: 25px;
+  left: 25px;
+}
+
+
+.btnUp button{
+  height: 55px;
+  width: 55px;
+  background: #BDFFD7;
+  border: 1px solid #BDFFD7;
+  outline: none;
+  border-radius: 50%;
+  font-size: 2rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: .4s ease all;
+}
+
+.btnUp.active button{
+  opacity: 1;
+}
+
+.btnUp button:hover i{
+  animation: rotateArrow 0.5s linear;
+}
+
+header {
+  z-index: 99;
+  width: 80%;
+  height: 75px;
+  display: flex;
+  margin: 15px auto;
+  justify-content: space-between;
+  color: #353535;
+  position: relative;
+}
+
+.loginModal, .registerModal {
+  position: absolute;
+  width: 250px;
+  height: auto;
+  background-color: white;
+  z-index: 99;
+  top: 0;
+  opacity: 0;
+  right: 23px;
+  box-shadow: 0 0 4px lightgray;
+  border-radius: 20px;
+  text-align: center;
+  transition: .5s ease all;
+  pointer-events: none;
+}
+
+.registerModal{
+  right: -63px;
+}
+
+.loginModal.active, .registerModal.active{
+  top: 100%;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.loginModal::after, .registerModal::after{
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  border: 15px solid transparent;
+  border-bottom: 15px solid white;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.loginModal h1, .registerModal h1{
+  margin: 10px 0 0 0;
+}
+
+.loginModal .error, .registerModal .error{
+  margin: 0;
+  color: red;
+}
+
+.loginModal form div, .registerModal form div{
+  margin: 5px;
+  width: 100%;
+}
+
+.loginModal form input, .registerModal form input{
+  font-size: 16px;
+  width: 60%;
+}
+
+.loginModal form p, .registerModal form p{
+  margin: 0;
+  color: #BDFFD7;
+}
+
+.loginModal form .btnSignIn, .registerModal form .btnSignUp{
+  background-color: #5FFD9D;
+  border: none;
+  outline: none;
+  color: #353535;
+  margin: 25px 0;
+  cursor: pointer;
+  transition: .3s ease all;
+}
+
+.loginModal form .btnSignIn:hover, .registerModal form .btnSignUp{
+  background-color: #00C54D;
+}
+
+.navbar {
+  display: flex;
+  width: 100%;
+  padding: 0 150px;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  align-items: center;
+}
+
+.btnOpen{
+  width: 30px;
+  height: 4px;
+  background: black;
+  position: absolute;
+  display: none;
+}
+
+.btnOpen .bg{
+  width: 100%;
+  height: 900%;
+  background: transparent;
+}
+
+.btnOpen::after{
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 4px;
+  background: black;
+  top: 10px;
+}
+
+.btnOpen::before{
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 4px;
+  background: black;
+  top: 20px;
+}
+
+.options{
+  display: flex;
+  align-items: center;
+}
+
+.options .urllist {
+  display: flex;
+  list-style: none;
+}
+
+.options .urllist.first-list {
+  padding: 0;
+}
+
+.options .urllist.second-list {
+  padding: 0;
+}
+
+.options .first-list .listItem {
+  margin: 0 15px;
+  padding: 0 15px;
+  width: 110%;
+  border: 1px solid transparent;
+  transition: 0.5s ease all;
+  position: relative;
+}
+
+.options .first-list .listItem:hover::after{
+  width: 100%;
+}
+
+.options .first-list .listItem::after{
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background: green;
+  transition: .3s ease all;
+}
+
+.options .second-list .listItem {
+  margin: 0 15px;
+  padding: 0 15px;
+  width: 110%;
+  border: 1px solid transparent;
+  transition: 0.5s ease all;
+  position: relative;
+}
+
+.options .listItem a {
+  color: black;
+  text-decoration: none;
+}
+
+.main__info {
+  width: 100%;
+}
+
+.info__content {
+  display: flex;
+  align-items: flex-start;
+  margin: 0 50px;
+  position: relative;
+}
+
+.main__info .bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 255, 102, 0.26);
+  z-index: -1;
+  clip-path: polygon(0 0, 100% 0, 100% 57%, 0% 100%);
+}
+
+.info__text {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 0;
+}
+
+.info__text .text__title {
+  font-family: "Nunito", sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+}
+
+.info__text .text__description {
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 50px;
+}
+
+.info__text .text__options p {
+  font-weight: 900;
+  font-size: 1.7rem;
+}
+
+svg #Group path {
+  transition: .2s ease all; 
+  animation: changeColor 2s infinite linear alternate;
+}
+
+svg #right_arm{
+  animation: moveArm 1s linear infinite alternate;
+}
+
+svg #left_arm{
+  animation: moveArm 1s linear infinite alternate;
+  z-index: 1;
+}
+
+svg #complete_body{
+  transform-origin: bottom;
+  animation: moveArm 1s linear infinite alternate;
+}
+
+svg #head {
+  animation: moveArm 1s linear infinite alternate;
+  z-index: 0;
+}
+
+svg #btn, svg #Vector_46{
+  animation: moveArm 1s linear infinite alternate;
+}
+
+svg #Vector{
+  animation: showBestColor 4s linear infinite alternate;
+}
+
+svg #Vector_32{
+  animation: moveBall 3s linear infinite;
+}
+
+svg #Vector_33{
+  animation: moveBall 3s linear infinite;
+  animation-delay: 0.7s;
+}
+
+svg #Vector_34{
+  animation: moveBall 3s linear infinite;
+  animation-delay: 1.4s;
+}
+
+.btnBasic {
+  width: 230;
+  height: 49;
+  background: #1f1f1f;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease all;
+  font-size: 1.1rem;
+  margin: 0 10px;
+}
+
+.btnBasic.transparent {
+  background: rgba(31, 31, 31, 0.27);
+}
+
+.btnBasic.transparent:hover {
+  color: rgba(31, 31, 31, 0.27);
+  background: white;
+}
+
+.btnBasic:hover {
+  background: #2f2f2f;
+}
+
+.info__img {
+  z-index: 1;
+  width: 80%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.info__img svg {
+  width: 80%;
+  z-index: 2;
+}
+
+.btnDown a {
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
+  color: black;
+  text-decoration: none;
+  z-index: 99;
+}
+
+.btnDown p {
+  margin: 0;
+}
+
+.arrow {
+  width: 15px;
+  height: 15px;
+  margin-bottom: 15px;
+  background: transparent;
+  border: solid 15px;
+  border-color: #000 transparent transparent transparent;
+  animation: moveArrow infinite linear 0.5s alternate;
+  box-sizing: border-box;
+}
+
+.services{
+  height: 360px;
+  background-color: #fbfbfb;
+  color: rgb(31, 31,31);
+  padding: 15px 20px;
+  margin-bottom: 40px;
+}
+
+.title_sec{
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+}
+
+.slider {
+	 background: transparent;
+	 margin: 25px auto;
+	 overflow: hidden;
+	 position: relative;
+   width: 100%;
+}
+
+.slider:hover .slide-track{
+  animation-play-state: paused;
+}
+
+ .slider::before, .slider::after {
+	 background: linear-gradient(to right, rgba(250, 250, 250, 0.70) 0%, rgba(250, 250, 250, 0) 100%);
+	 content: "";
+	 height: 100%;
+	 position: absolute;
+	 width: 200px;
+	 z-index: 2;
+}
+ .slider::after {
+	 right: 0;
+	 top: 0;
+	 transform: rotateZ(180deg);
+}
+ .slider::before {
+	 left: 0;
+	 top: 0;
+}
+ .slider .slide-track {
+	 animation: scroll 30s linear infinite alternate;
+   animation-delay: 3s;
+	 display: flex;
+	 width: calc(250px * 14);
+}
+
+.slide.first {
+  margin-left: 20px;
+}
+
+ .slider .slide {
+	 width: 250px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin: 10px 25px;
+   text-align: justify;
+}
+
+.slide i{
+  font-size: 4rem;
+  color: #A0D8B7;
+}
+ 
+.slide p{
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.title_sec.ventajas {
+  margin-bottom: 25px;
+}
+
+.ventajas{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ventaja{
+  margin: 0 0 50px 0;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  padding: 0 45px;
+}
+
+.advertising {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.advertising .inputs{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  background-color: #BDFFD7;
+  margin: auto;
+  box-shadow: 0 0 60px #BDFFD7;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.inputs h1{
+  font-size: 3rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.inputs form{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.inputs form input{
+  font-size: 1.5rem;
+  border: 1px solid lightgray;
+  outline: none;
+  width: 50%;
+  border-radius: 25px;
+  padding: 15px 25px;
+  margin-right: 50px;
+}
+
+.inputs form button{
+  width: 20%;
+  background-color: #5FFD9D;
+  font-size: 1.5rem;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  transition: .4s ease all;
+  cursor: pointer;
+}
+
+.inputs form button:hover{
+  background-color: #00C54D;
+}
+
+.title_sec.contact {
+  margin-bottom: 20px;
+}
+
+.contact form div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  margin: 25px auto;
+}
+
+form label {
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+form input{
+  width: 70%;
+  font-size: 1.2rem;
+  padding: 5px 15px;
+  border-radius: 25px;
+  border: 1px solid lightgray;
+  outline: none;
+}
+
+form textarea{
+  width: 70%;
+  font-size: 1.2rem;
+  padding: 5px 15px;
+  border-radius: 25px;
+  border: 1px solid lightgray;
+  outline: none;
+}
+
+.contact form button{
+  margin: auto;
+  padding: 10px 30px;
+  background-color: #5FFD9D;
+  border-radius: 25px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: .5s ease all; 
+}
+
+.contact form button:hover{
+  background-color: #00C54D;
+}
+
+footer{
+  display: flex;
+  width: calc(100% - 100px);
+  justify-content: space-between;
+  padding: 25px 50px;
+  background-color: #80FFB2;
+  position: relative;
+}
+
+footer h4{
+  position: absolute;
+  bottom: -10px;
+  right: 5px;
+  color: gray;
+}
+
+footer .subscribe{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.subscribe form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subscribe form input {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.subscribe form button{
+  margin: auto;
+  padding: 10px 30px;
+  background-color: #5FFD9D;
+  border-radius: 25px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: .5s ease all;
+  font-size: 1rem;
+}
+
+.subscribe form button:hover{
+  background-color: #00C54D;
+}
+
+footer .logo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+footer .logo figure{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer .logo figure figcaption{
+  font-size: 1.5rem;
+}
+
+footer .social{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+footer .social h1{
+  margin: 10px 0;
+}
+
+footer .social ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+footer .social ul li{
+  font-size: 2.5rem;
+  margin: 0 20px;
+}
+
+footer .social ul li a{
+  color: black;
+  transition: .5s ease all;
+}
+
+footer .social ul li a:hover{
+  color: #00C54D;
+}
+/* Keyframes */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 5));
+  }
+}
+
+@keyframes moveArrow {
+  to {
+    transform: translateY(0);
+  }
+  from {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes rotateArrow {
+  from{
+    transform: rotate(0);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes changeColor{
+  from{
+    fill: lightgreen;
+  }
+  to{
+    fill: rgb(0, 159, 64);
+    opacity: 1;
+  }
+}
+
+@keyframes moveArm{
+  from{
+    transform: translate(5px, 0px);
+  }
+  to{
+    transform: translate(0,0);
+  }
+}
+
+@keyframes showBestColor{
+  from{
+      opacity: 0;
+      fill: rgb(0, 159, 64);
+  }
+  to{
+      opacity: 0.3;
+      fill: rgb(0, 159, 64);
+  }
+}
+
+@keyframes moveBall{
+  from{
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to{
+    transform: translateY(-25px);
+    opacity: 0;
+  }
+}
+
+/* Media queries */
+
+@media (max-width: 1126px){
+  .info__img, .ventajas .ventaja img{
+    display: none;
+  }
+  
+  .main__info{
+    height: calc(100vh - 75px);
+  }
+
+  header .navbar{
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 25px;
+    z-index: 999;
+    font-size: 2rem;
+  }
+  
+  .btnOpen{
+    right: 50px;
+    display: block;
+    cursor: pointer;
+  }
+  
+  .options{
+    position: absolute;
+    flex-direction: column;
+    background: white;
+    width: calc(100% + 100px);
+    transform: translateX(-50px);
+    top: calc(100% + 25px);
+    left: 0;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height:0;
+    overflow: hidden;
+    opacity: 0;
+    transition: .5s ease all;
+  }
+
+  .options.active{
+    height: auto;
+    overflow: hidden;
+    opacity: 1;
+  }
+
+  .options .urllist{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding-bottom: 25px;
+  }
+
+  .btnDown{
+    position: absolute;
+    top: calc(100vh - 127px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  footer{
+    flex-direction: column;
+  }
+  
+  .btnDown{
+    display: none;
+  }
+
+  form input{
+    width: 100%;
+  }
+}
