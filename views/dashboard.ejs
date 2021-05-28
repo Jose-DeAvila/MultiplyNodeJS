@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - LoansApp</title>
+  <link rel="stylesheet" href="../appPrestamos/css/dashboard.css" media="all">
+</head>
+<body onload="getInformation()">
+  <script>
+    if(!localStorage.getItem('userData')){
+      window.location.href = "/appPrestamos";
+    }
+  </script>
+  <div class="container">
+    <div class="options">
+      <div class="option modify-name">
+        <h1>Editar Información</h1>
+        <form method="POST" action="../../api/users/editar">
+          <div class="name">
+            <p><i class="fas fa-signature"></i> Nombre</p>
+            <input id="name" type="text" placeholder="Jhon Doe" name="name">
+          </div>
+          <div class="email">
+            <p><i class="fas fa-at"></i> Correo electrónico</p>
+            <input id="email" type="email" placeholder="correo@correo.com" name="email">
+          </div> 
+          <button type="submit">Cambiar</button>
+          <input type="hidden" name="id" id="id">
+        </form>
+      </div>
+      <div class="option delete-account">
+        <h1>Eliminar cuenta</h1>
+        <form action="../../api/users/delete" method="POST">
+          <input type="hidden" name="id" id="id-delete">
+          <button type="submit">Eliminar cuenta</button>
+        </form>
+      </div>
+      <div class="option delete-account">
+        <h1>Cerrar sesión</h1>
+        <button onclick="closeSession()">Cerrar sesión</button>
+      </div> 
+    </div>
+  </div>
+  <script src="../appPrestamos/js/main.js"></script>
+  <script src="https://kit.fontawesome.com/a2a22ec152.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -28,7 +28,12 @@ mongoose.connect(mongoURL, {
 app.use(express.static(path.join(__dirname,'public')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
 app.use('/api', apiRouter);
+
+app.get('/appPrestamos/dashboard', (req, res) => {
+  res.render('dashboard');
+})
 
 app.get('/', (req, res) => {
   res.send('<p>¿Where do you want to go? <a href="/appPrestamos/">Loans App</a> or <a href="/calculator/">Multiply</a></p>');

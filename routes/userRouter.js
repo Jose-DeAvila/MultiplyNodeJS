@@ -5,9 +5,19 @@ const User = require('../models/usersModel');
 const userRouter = express.Router();
 const BCRYPT_SALT_ROUNDS = 12;
 
+userRouter.post('/editar', async (req, res) => {
+  const {name, email, password, id} = req.body;
+  await User.updateOne({_id: id}, {name: `${name}`, email: email});
+  res.send("<script>localStorage.removeItem('userData'); window.location.href='/appPrestamos';</script>")
+});
+
+userRouter.post('/delete', async (req, res)=>{
+  await User.deleteOne({_id: req.body.id});
+  res.send("<script>localStorage.removeItem('userData'); window.location.href='/appPrestamos';</script>")
+})
+
 userRouter.post('/register', async (req, res) => {
   const {name, email, password} = req.body;
-  console.log(req.body);
   try{
     userRegistered = await User.findOne({
       email: email
@@ -22,16 +32,16 @@ userRouter.post('/register', async (req, res) => {
           password: hashedPassword
         }
   
-        const userCreated = User.create(userData);
-        console.log(userCreated);
+        User.create(userData).then(userCreated => {
+          if(userCreated){
+            res.send({msg: "User registered succesfully", code: 200, data: userCreated});
+          }  
+          else{
+            res.send({msg: "An error has ocurred in the process", code: 500});
+          }
+        });
 
-        if(userCreated){
-          res.send({msg: "User registered succesfully", code: 200, data: userCreated});
-        }
-
-        else{
-          res.send({msg: "An error has ocurred in the process", code: 500});
-        }
+       
       });
     }
     else{

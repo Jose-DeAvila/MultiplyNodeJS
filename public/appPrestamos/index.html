@@ -8,7 +8,7 @@
   </head>
   <script>
     if(localStorage.getItem('userData')){
-      window.location.href="/dashboard";
+      window.location.href="/appPrestamos/dashboard";
     }
   </script>
   <body onscroll="checkScroll()">
@@ -39,7 +39,7 @@
       </div>
       <div class="loginModal" id="loginModal"> 
         <h1>Ingresar</h1>
-        <p id="error" class="error"></p>
+        <p id="error-login" class="error"></p>
         <form onsubmit="loginHandler(event)">
           <div class="email">
             <i class="fas fa-at"></i>

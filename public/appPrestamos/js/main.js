@@ -5,6 +5,19 @@ if(document.getElementById('btnUp')){
 
 }
 
+function closeSession(){
+  localStorage.removeItem('userData');
+  window.location.href = '/appPrestamos';
+}
+
+function getInformation(){
+  const userData = JSON.parse(localStorage.getItem('userData'));
+  document.getElementById('name').value = unescape(userData.name);
+  document.getElementById('email').value = unescape(userData.email);
+  document.getElementById('id-delete').value = unescape(userData._id);
+  document.getElementById('id').value = unescape(userData._id);
+}
+
 function checkScroll(){
   const btnUpC = document.getElementById('btnUpContainer');
   if(window.scrollY > 0){
@@ -42,15 +55,15 @@ async function loginHandler(e){
     }
   });
   const dataParsed = await data.json();
+  console.log(dataParsed);
   if(dataParsed.code === 401){
-    document.getElementById('error').innerText = dataParsed.msg;
+    document.getElementById('error-login').innerText = dataParsed.msg;
     email.value = '';
     password.value = '';
   }
   else if(dataParsed.code === 202){
-    console.log(dataParsed.data);
     localStorage.setItem('userData', JSON.stringify(dataParsed.data));
-    window.location.href = '/dashboard';
+    window.location.href = '/appPrestamos/dashboard';
   }
 }
 
@@ -69,7 +82,7 @@ async function registerHandler(e){
   });
   const dataParsed = await data.json();
   if(dataParsed.code==200){
-    console.log(dataParsed.data);
     localStorage.setItem('userData', JSON.stringify(dataParsed.data));
+    window.location.href = '/appPrestamos/dashboard';
   }
 }
